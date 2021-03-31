@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <header>
-        <h1 class="header">
+    <header class="header">
+        <h1 class="main-title">
             ToDo App
         </h1>
     </header>
-    <form action="#">
-        <input type="text" class="input-task" placeholder="Enter a task to do">
-        <button type="submit">
+    <form action="#" class="task-form">
+        <input type="text" class="form-item input-task" placeholder="Enter a task to do">
+        <button class="form-item btn-task-add" type="submit">
             <i class="far fa-plus-square"></i>
         
         </button>
@@ -27,10 +27,10 @@
         <ul class="task-list">
             <div class="task-item task-complete">
                 <li class="task-define">Go Market</li>
-                <button class="task-btn task-complete">
+                <button class="task-btn task-btn-complete">
                     <i class="far fa-check-square"></i>
                 </button>
-                <button class="task-btn task-delete">
+                <button class="task-btn task-btn-delete">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </div>
