@@ -22,5 +22,16 @@ function taskAdd(e) {
 
     taskList.appendChild(taskDiv);
 
+    // completed button add
+
+    const taskCompleteBtn = document.createElement('button');
+    taskCompleteBtn.classList.add('task-btn');
+    taskCompleteBtn.classList.add('task-btn-complete');
+    taskCompleteBtn.innerHTML = '<i class="far fa-check-square"></i>';
+    taskDiv.appendChild(taskCompleteBtn);
+
+
+
+
     //console.log('click me')
 }
