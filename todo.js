@@ -30,6 +30,14 @@ function taskAdd(e) {
     taskCompleteBtn.innerHTML = '<i class="far fa-check-square"></i>';
     taskDiv.appendChild(taskCompleteBtn);
 
+    // Deleted button add
+
+    const taskDeleteBtn = document.createElement('button');
+    taskDeleteBtn.classList.add('task-btn');
+    taskDeleteBtn.classList.add('task-btn-delete');
+    taskDeleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+    taskDiv.appendChild(taskDeleteBtn);
+
 
 
 
