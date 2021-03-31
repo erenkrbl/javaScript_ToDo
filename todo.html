@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO APP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <header>
@@ -22,17 +25,28 @@
     </form>
     <div class="task-container">
         <ul class="task-list">
-            <div class="task-item">
+            <div class="task-item task-complete">
                 <li class="task-define">Go Market</li>
-                <button>
+                <button class="task-btn task-complete">
                     <i class="far fa-check-square"></i>
                 </button>
-                <button>
+                <button class="task-btn task-delete">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+            <div class="task-item">
+                <li class="task-define">Go Market</li>
+                <button class="task-btn task-btn-complete">
+                    <i class="far fa-check-square"></i>
+                </button>
+                <button class="task-btn task-btn-delete">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </div>
         </ul>
     </div>
+
+    <script src="todo.js"></script>
     
 </body>
 </html>
