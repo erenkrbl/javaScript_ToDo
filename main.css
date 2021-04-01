@@ -91,3 +91,9 @@ body {
     text-decoration: line-through;
     opacity: 0.5;
 }
+.far {
+    pointer-events: none;
+}
+.fas {
+    pointer-events: none;
+}

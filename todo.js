@@ -3,6 +3,20 @@ const newTaskAddBtn = document.querySelector('.btn-task-add');
 const taskList = document.querySelector('.task-list');
 
 newTaskAddBtn.addEventListener('click', taskAdd);
+taskList.addEventListener('click', taskDeleteComplete);
+
+function taskDeleteComplete(e) {
+    const clickElement = e.target;
+    
+    if (clickElement.classList.contains('task-btn-complete')) {
+        console.log('Click complete');
+        clickElement.parentElement.classList.toggle('task-complete');
+    } 
+    if (clickElement.classList.contains('task-btn-delete')) {
+        console.log('Click delete');
+        clickElement.parentElement.remove();
+    }
+}
 
 function taskAdd(e) {
     e.preventDefault();
@@ -37,6 +51,8 @@ function taskAdd(e) {
     taskDeleteBtn.classList.add('task-btn-delete');
     taskDeleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
     taskDiv.appendChild(taskDeleteBtn);
+
+    newTask.value = '';
 
 
 
