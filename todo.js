@@ -14,23 +14,30 @@ function taskDeleteComplete(e) {
         clickElement.parentElement.classList.toggle('task-complete');
     } 
     if (clickElement.classList.contains('task-btn-delete')) {
-        clickElement.parentElement.classList.toggle('getlost');
-        const deleteTask = clickElement.parentElement.children[0].innerText;
-        localStorageDelete(deleteTask);
-
-        clickElement.parentElement.addEventListener('transitionend', function() {
-            clickElement.parentElement.remove();
-        });
+        if (confirm('Are you sure')) {
+            clickElement.parentElement.classList.toggle('getlost');
+            const deleteTask = clickElement.parentElement.children[0].innerText;
+            localStorageDelete(deleteTask);
+    
+            clickElement.parentElement.addEventListener('transitionend', function() {
+                clickElement.parentElement.remove();
+            });
+        }
     }
 }
 
 function taskAdd(e) {
     e.preventDefault();
+    if (newTask.value.length > 0) {
+        taskItemCreate(newTask.value);
+        // localStorage Submit
+        localStorageSubmit(newTask.value);
+        newTask.value = '';
+    } else {
+        alert("Empty task can't be");
+    }
 
-    taskItemCreate(newTask.value);
-    // localStorage Submit
-    localStorageSubmit(newTask.value);
-    newTask.value = '';
+
     
 }
 
