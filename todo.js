@@ -4,6 +4,7 @@ const taskList = document.querySelector('.task-list');
 
 newTaskAddBtn.addEventListener('click', taskAdd);
 taskList.addEventListener('click', taskDeleteComplete);
+document.addEventListener('DOMContentLoaded', localStorageRead);
 
 function taskDeleteComplete(e) {
     const clickElement = e.target;
@@ -23,6 +24,43 @@ function taskDeleteComplete(e) {
 
 function taskAdd(e) {
     e.preventDefault();
+
+    taskItemCreate(newTask.value);
+    // localStorage Submit
+    localStorageSubmit(newTask.value);
+    newTask.value = '';
+    
+}
+
+function localStorageSubmit (newTask) {
+    let tasks;
+    if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+
+    tasks.push(newTask);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+}
+
+// localStorage read
+function localStorageRead() {
+    let tasks;
+    if (localStorage.getItem('tasks')=== null) {
+        tasks = [];
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+
+    tasks.forEach(function (task){
+        taskItemCreate(task);
+    }); 
+}
+
+function taskItemCreate (task) {
+    
     // div created
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task-item');
@@ -31,7 +69,7 @@ function taskAdd(e) {
 
     const taskLi = document.createElement('li');
     taskLi.classList.add('task-define');
-    taskLi.innerText = newTask.value;
+    taskLi.innerText = task;
     taskDiv.appendChild(taskLi);
 
     // completed button add
@@ -50,24 +88,9 @@ function taskAdd(e) {
     taskDeleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
     taskDiv.appendChild(taskDeleteBtn);
      
-    // localStorage Submit
-    localStorageSubmit(newTask.value);
-    newTask.value = '';
    
     //adding the created div to ul
 
     taskList.appendChild(taskDiv);
-}
-
-function localStorageSubmit (newTask) {
-    let tasks;
-    if (localStorage.getItem('tasks') === null) {
-        tasks = [];
-    } else {
-        tasks = JSON.parse(localStorage.getItem('tasks'));
-    }
-
-    tasks.push(newTask);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
 
 }
