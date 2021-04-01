@@ -67,6 +67,7 @@ body {
     margin: .5rem;
     font-size: 1.2rem;
     background-color: white;
+    transition: .5s ease-in-out;
 }
 
 .task-define {
@@ -96,4 +97,8 @@ body {
 }
 .fas {
     pointer-events: none;
+}
+
+.getlost {
+    transform: scale(0);
 }
