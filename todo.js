@@ -15,6 +15,8 @@ function taskDeleteComplete(e) {
     } 
     if (clickElement.classList.contains('task-btn-delete')) {
         clickElement.parentElement.classList.toggle('getlost');
+        const deleteTask = clickElement.parentElement.children[0].innerText;
+        localStorageDelete(deleteTask);
 
         clickElement.parentElement.addEventListener('transitionend', function() {
             clickElement.parentElement.remove();
@@ -93,4 +95,21 @@ function taskItemCreate (task) {
 
     taskList.appendChild(taskDiv);
 
+}
+
+function localStorageDelete (task) {
+    let tasks;
+    if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+
+    // item delete with splice
+
+    const deleteElementIndex = tasks.indexOf(task);
+    console.log(deleteElementIndex);
+    tasks.splice(deleteElementIndex, 1);
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));   
 }
