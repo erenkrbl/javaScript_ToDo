@@ -34,28 +34,30 @@ function taskAdd(e) {
     
 }
 
-function localStorageSubmit (newTask) {
-    let tasks;
-    if (localStorage.getItem('tasks') === null) {
-        tasks = [];
-    } else {
-        tasks = JSON.parse(localStorage.getItem('tasks'));
-    }
-
-    tasks.push(newTask);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-
-}
-
-// localStorage read
-function localStorageRead() {
+function convertlocalStorageArray () {
     let tasks;
     if (localStorage.getItem('tasks')=== null) {
         tasks = [];
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
+    return tasks;
+}
 
+function localStorageSubmit (newTask) {
+    let tasks = convertlocalStorageArray();
+   
+    tasks.push(newTask);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+}
+
+
+
+// localStorage read
+function localStorageRead() {
+    let tasks = convertlocalStorageArray();
+   
     tasks.forEach(function (task){
         taskItemCreate(task);
     }); 
@@ -98,17 +100,12 @@ function taskItemCreate (task) {
 }
 
 function localStorageDelete (task) {
-    let tasks;
-    if (localStorage.getItem('tasks') === null) {
-        tasks = [];
-    } else {
-        tasks = JSON.parse(localStorage.getItem('tasks'));
-    }
+    let tasks = convertlocalStorageArray();
+    
 
     // item delete with splice
 
     const deleteElementIndex = tasks.indexOf(task);
-    console.log(deleteElementIndex);
     tasks.splice(deleteElementIndex, 1);
 
     localStorage.setItem('tasks', JSON.stringify(tasks));   
