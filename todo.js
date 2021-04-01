@@ -14,7 +14,7 @@ function taskDeleteComplete(e) {
     } 
     if (clickElement.classList.contains('task-btn-delete')) {
         clickElement.parentElement.classList.toggle('getlost');
-        
+
         clickElement.parentElement.addEventListener('transitionend', function() {
             clickElement.parentElement.remove();
         });
@@ -32,12 +32,7 @@ function taskAdd(e) {
     const taskLi = document.createElement('li');
     taskLi.classList.add('task-define');
     taskLi.innerText = newTask.value;
-
     taskDiv.appendChild(taskLi);
-
-    //adding the created div to ul
-
-    taskList.appendChild(taskDiv);
 
     // completed button add
 
@@ -54,11 +49,25 @@ function taskAdd(e) {
     taskDeleteBtn.classList.add('task-btn-delete');
     taskDeleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
     taskDiv.appendChild(taskDeleteBtn);
-
+     
+    // localStorage Submit
+    localStorageSubmit(newTask.value);
     newTask.value = '';
+   
+    //adding the created div to ul
 
+    taskList.appendChild(taskDiv);
+}
 
+function localStorageSubmit (newTask) {
+    let tasks;
+    if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
 
+    tasks.push(newTask);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 
-    //console.log('click me')
 }
