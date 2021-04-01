@@ -9,12 +9,15 @@ function taskDeleteComplete(e) {
     const clickElement = e.target;
     
     if (clickElement.classList.contains('task-btn-complete')) {
-        console.log('Click complete');
+        
         clickElement.parentElement.classList.toggle('task-complete');
     } 
     if (clickElement.classList.contains('task-btn-delete')) {
-        console.log('Click delete');
-        clickElement.parentElement.remove();
+        clickElement.parentElement.classList.toggle('getlost');
+        
+        clickElement.parentElement.addEventListener('transitionend', function() {
+            clickElement.parentElement.remove();
+        });
     }
 }
 
